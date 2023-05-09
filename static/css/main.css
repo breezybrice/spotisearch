@@ -1,0 +1,12 @@
+body {
+    background-image: url('../img/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    overflow-y: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+  

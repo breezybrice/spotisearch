@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %} <title>SpotiSearch</title> {% endblock %} 
+
+{% block body %}
+    <div style="margin-top: 10%;" class="ui text container">
+        <h1 class="ui center aligned icon blue inverted huge header">
+            <i class="music icon"></i>
+            <div class="content">
+                Discover New Music on Spotify
+                <div class="ui hidden divider"></div>
+              <h4 class="ui sub header">Choose an option below</h4>
+            </div>
+        </h1>
+        <div class="ui hidden section divider"></div>
+
+
+        <div class="ui center aligned basic segment">
+            <form action="{{ url_for('search', code=code) }}" method="post" enctype="multipart/form-data">
+                <input type="text" id="playlist" name="playlist"/>
+                <button type="submit" class="ui green big button">Get Track Info From A Playlist</button>
+                </form>
+                <p>Use Playlist ID. Ex: 7rlQRsz9M9ae3C9Sjye4PZ</p>
+        <div class="ui hidden section divider"></div>
+
+
+        {#      Future Features
+
+        <div class="ui center aligned basic segment">
+            <form action="{{ url_for('search', code=code) }}" method="post" enctype="multipart/form-data">
+                <input type="text" id="search" name="search"/>
+                <button type="submit" class="ui green big button">Search For Artists</button>
+                </form>
+
+        <div class="ui hidden section divider"></div>
+
+        <div class="ui center aligned basic segment">
+            <input type="text" id="album">
+            <a id="loader" class="ui green big button" href="{{ url_for('get_album', code=code) }}" onclick="load()">
+                Get Album!</a>
+
+        <div class="ui hidden section divider"></div>
+
+        <div class="ui center aligned basic segment">
+            <input type="text" id="artist">
+            <a id="loader" class="ui green big button" href="{{ url_for('get_artist', code=code) }}" onclick="load()">
+                Get Artist!</a>
+        </div> 
+        #}
+    </div>
+    
+{% endblock %}
+

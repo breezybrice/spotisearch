@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+    <title>Playlist Tracks</title>
+{% endblock %}
+{% block body %}    
+    <div style="margin-top: 10%;" class="ui text container">
+        <h1 class="ui center aligned icon blue inverted huge header">
+            <i class="music icon"></i>
+            <div class="content">
+                Playlist Tracks
+                <div class="ui hidden divider"></div>
+            <h4 class="ui sub header">Get Song Info From A Specified Playlist</h4>
+            </div>
+        </h1>
+        <div class="ui hidden section divider"></div>
+
+        <div class="ui container">
+            <div class="ui segment" style="max-height: 450px; overflow-y: scroll;">
+            <table id="playlist-tracks" class="ui celled table center aligned">
+                <thead>
+                    <tr>
+                        <th>Track Name</th>
+                        <th>Artist Name</th>
+                        <th>Album Name</th>
+                        <th>Key</th>
+                        <th>Mode</th>
+                        <th>Tempo</th>
+                        <th>Valence</th>
+                        <th>Danceability</th>
+                        <th>Energy</th>
+                        <th>Instrumentalness</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+    <script>
+        // access the tracks data from the Flask route using Jinja
+        const tracks = JSON.parse('{{ tracks|tojson }}');
+        
+        // loop through the tracks and display them in the HTML table
+        const playlistTracksTable = document.getElementById("playlist-tracks").getElementsByTagName('tbody')[0];
+        tracks.forEach(track => {
+            const row = playlistTracksTable.insertRow();
+            row.innerHTML = `
+                <td>${track.track_name}</td>
+                <td>${track.artist_name}</td>
+                <td>${track.album_name}</td>
+                <td>${track.key}</td>
+                <td>${track.mode}</td>
+                <td>${track.tempo}</td>
+                <td>${track.valence}</td>
+                <td>${track.danceability}</td>
+                <td>${track.energy}</td>
+                <td>${track.instrumentalness}</td>`;
+        });
+    </script>
+{% endblock %}
